@@ -14,7 +14,7 @@ after_success:
   - docker build -t jbshaw/multi-nginx ./nginx
   - docker build -t jbshaw/multi-server ./server
   - docker build -t jbshaw/multi-worker ./worker
-  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin      
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin      
   - docker push jbshaw/multi-client
   - docker push jbshaw/multi-nginx
   - docker push jbshaw/multi-server
