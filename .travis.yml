@@ -4,21 +4,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t jamieshaw/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t jbshaw/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true jamieshaw/react-test npm test 
+  - docker run -e CI=true jbshaw/react-test npm test 
 
 after_success:
-  - docker build -t jamieshaw/multi-client ./client
-  - docker build -t jamieshaw/multi-nginx ./nginx
-  - docker build -t jamieshaw/multi-server ./server
-  - docker build -t jamieshaw/multi-worker ./worker
+  - docker build -t jbshaw/multi-client ./client
+  - docker build -t jbshaw/multi-nginx ./nginx
+  - docker build -t jbshaw/multi-server ./server
+  - docker build -t jbshaw/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin      
-  - docker push jamieshaw/multi-client
-  - docker push jamieshaw/multi-nginx
-  - docker push jamieshaw/multi-server
-  - docker push jamieshaw/multi-worker
+  - docker push jbshaw/multi-client
+  - docker push jbshaw/multi-nginx
+  - docker push jbshaw/multi-server
+  - docker push jbshaw/multi-worker
 
 
 
